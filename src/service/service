@@ -1,0 +1,3 @@
+•	Contains the business logic of the system.
+•	Processes user requests received from the Presentation Layer.
+•	Validates data before sending it to the Data Layer.
