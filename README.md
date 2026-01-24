@@ -16,11 +16,11 @@ src/
  │   ├─ controllers/
  │   └─ views/
  ├─ service/
- │   └─ AttendanceService.java
+ │   └─ AttendanceService.py
  ├─ data/
- │   └─ AttendanceDAO.java
+ │   └─ AttendanceDAO.py
 config/
- └─ DIConfig.java
+ └─ DIConfig.py
 
 ## Key Features
 - Mark student attendance
