@@ -1,0 +1,26 @@
+@startuml
+title Student Attendance System - MVC Architecture
+
+package "View" {
+  [Attendance Web Page]
+}
+
+package "Controller" {
+  [AttendanceController]
+}
+
+package "Model" {
+  [AttendanceModel]
+}
+
+database "Database" as DB
+
+[Attendance Web Page] --> [AttendanceController] : User Input
+[AttendanceController] --> [AttendanceModel] : Process Request
+[AttendanceModel] --> DB : Store/Retrieve Data
+DB --> [AttendanceModel] : Data Response
+[AttendanceModel] --> [AttendanceController] : Return Data
+[AttendanceController] --> [Attendance Web Page] : Display Output
+
+@enduml
+
