@@ -1,0 +1,9 @@
+Users (teachers/admins) interact with the system through views such as:
+
+Attendance form
+
+Attendance list
+
+Reports page
+
+The View collects user input (e.g., student ID, date, attendance status) and sends it to the Controller.
