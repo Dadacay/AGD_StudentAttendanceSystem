@@ -1,26 +1,12 @@
-package test.service;
+from service.AttendanceService import AttendanceService
+from data.AttendanceDAO import AttendanceDAO
 
-import service.AttendanceService;
-import data.AttendanceDAO;
+print("Running AttendanceService Test...")
 
-/**
- * Test class for AttendanceService
- */
-public class AttendanceServiceTest {
+dao = AttendanceDAO()
+service = AttendanceService(dao)
 
-    public static void main(String[] args) {
+service.mark_attendance("STU201", "2026-01-24", "Present")
+service.view_attendance("STU201")
 
-        // Arrange (setup dependencies)
-        AttendanceDAO dao = new AttendanceDAO();
-        AttendanceService service = new AttendanceService(dao);
-
-        // Act (test service methods)
-        System.out.println("Running AttendanceService Test...");
-        service.markAttendance("STU201", "2026-01-24", "Present");
-        service.viewAttendance("STU201");
-
-        // Assert (manual verification via console output)
-        System.out.println("AttendanceService Test Completed.");
-    }
-}
-
+print("AttendanceService Test Completed.")
