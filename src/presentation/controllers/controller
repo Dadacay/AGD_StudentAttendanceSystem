@@ -1,0 +1,11 @@
+The Controller receives input from the View.
+
+It acts as an intermediary between the View and the Model.
+
+The Controller:
+
+Validates user input
+
+Calls the appropriate Service/Model methods
+
+Controls application flow
