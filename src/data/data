@@ -1,0 +1,3 @@
+•	Handles data access logic.
+•	Communicates with the database to store or retrieve data.
+•	Returns processed data to the Service Layer.
