@@ -3,6 +3,7 @@
 from data.AttendanceDAO import AttendanceDAO
 from service.AttendanceService import AttendanceService
 from presentation.controllers.AttendanceController import AttendanceController
+from presentation.views.AttendanceCLI import AttendanceCLI
 
 def main():
     # Create DAO
@@ -14,9 +15,9 @@ def main():
     # Inject Service → Controller
     controller = AttendanceController(service)
 
-    # Simulate system flow
-    controller.mark_attendance("STU101", "2026-01-24", "Present")
-    controller.view_attendance("STU101")
+    # Inject Controller → CLI View
+    cli = AttendanceCLI(controller)
+    cli.start()  # Launch CLI menu
 
 if __name__ == "__main__":
     main()
