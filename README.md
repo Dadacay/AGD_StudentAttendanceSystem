@@ -1,6 +1,6 @@
 # AGD Student Attendance System
 
-A **student attendance management system** implemented in **Python**, designed to simplify attendance tracking for educational institutions. This repository is a refactored version of the original project but rewritten in Python with **clean architecture and design patterns** applied to make the system modular, maintainable, and extendable.
+A **student attendance management system** is integrated, designed to simplify attendance tracking for educational institutions. This repository is a refactored version of the original project but rewritten in Python with **clean architecture and design patterns** applied to make the system modular, maintainable, and extendable.
 
 ## 🧠 Overview
 
