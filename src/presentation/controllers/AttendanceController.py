@@ -1,17 +1,11 @@
-# src/presentation/controllers/AttendanceController.py
-# Controller Layer - Handles user requests and connects View to Service
+# presentation/controllers/attendance_controller.py
+from service.attendance_service import AttendanceService
+from service.strategy.time_based_strategy import TimeBasedStrategy
 
 class AttendanceController:
-    def __init__(self, attendance_service):
-        # Dependency Injection of Service
-        self.attendance_service = attendance_service
+    def __init__(self):
+        self.service = AttendanceService()
+        self.service.set_strategy(TimeBasedStrategy())
 
-    def mark_attendance(self, student_id, date, status):
-        print("Controller: Processing attendance request...")
-        self.attendance_service.mark_attendance(student_id, date, status)
-        print("Controller: Attendance marked successfully.\n")
-
-    def view_attendance(self, student_id):
-        print("Controller: Retrieving attendance records...")
-        self.attendance_service.view_attendance(student_id)
-        print("Controller: Attendance displayed successfully.\n")
+    def mark_button_clicked(self, student):
+        self.service.mark_attendance(student)
