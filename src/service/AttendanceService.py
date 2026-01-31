@@ -1,14 +1,14 @@
-# service/AttendanceService.py
-# Business Logic Layer
+# service/attendance_service.py
+from config.dao_factory import DAOFactory
 
 class AttendanceService:
-    def __init__(self, attendance_dao):
-        # Dependency Injection
-        self.attendance_dao = attendance_dao
+    def __init__(self):
+        self.dao = DAOFactory.get_attendance_dao()
+        self.strategy = None
 
-    def mark_attendance(self, student_id, date, status):
-        # Business rules can be added here
-        self.attendance_dao.save_attendance(student_id, date, status)
+    def set_strategy(self, strategy):
+        self.strategy = strategy
 
-    def view_attendance(self, student_id):
-        self.attendance_dao.get_attendance_by_student(student_id)
+    def mark_attendance(self, student):
+        if self.strategy and self.strategy.mark_attendance(student):
+            self.dao.save_attendance(student.id, "Present")
