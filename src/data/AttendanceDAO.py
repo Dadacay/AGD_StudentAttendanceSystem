@@ -1,14 +1,19 @@
-# data/AttendanceDAO.py
-# Data Access Layer
+# data/attendance_dao.py
+from config.db_connection import DBConnection
 
 class AttendanceDAO:
-    def save_attendance(self, student_id, date, status):
-        # Simulated database save
-        print(
-            f"Attendance Saved -> Student ID: {student_id}, "
-            f"Date: {date}, Status: {status}"
-        )
+    def __init__(self):
+        self.conn = DBConnection().get_connection()
 
-    def get_attendance_by_student(self, student_id):
-        # Simulated database fetch
-        print(f"Fetching attendance records for Student ID: {student_id}")
+    def save_attendance(self, student_id, status):
+        cursor = self.conn.cursor()
+        cursor.execute(
+            "INSERT INTO attendance (student_id, status) VALUES (?, ?)",
+            (student_id, status)
+        )
+        self.conn.commit()
+
+    def get_all_attendance(self):
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT * FROM attendance")
+        return cursor.fetchall()
