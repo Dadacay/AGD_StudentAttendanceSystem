@@ -1,0 +1,47 @@
+@startuml
+package config {
+    class DBConnection {
+        -_instance
+        +get_connection()
+    }
+
+    class DAOFactory {
+        +get_attendance_dao()
+    }
+}
+
+package data {
+    class AttendanceDAO {
+        +save_attendance()
+        +get_all_attendance()
+    }
+}
+
+package service {
+    interface AttendanceStrategy {
+        +mark_attendance()
+    }
+
+    class TimeBasedStrategy
+    class GeoBasedStrategy
+
+    class AttendanceService {
+        -strategy
+        +set_strategy()
+        +mark_attendance()
+    }
+}
+
+package presentation {
+    class AttendanceController {
+        +mark_button_clicked()
+    }
+}
+
+DBConnection --> AttendanceDAO
+DAOFactory ..> AttendanceDAO
+AttendanceService --> AttendanceStrategy
+TimeBasedStrategy ..|> AttendanceStrategy
+GeoBasedStrategy ..|> AttendanceStrategy
+AttendanceController --> AttendanceService
+@enduml
